@@ -1,0 +1,271 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    overflow:hidden;
+    background:#000;
+    color:white;
+    height:100vh;
+}
+
+/* =========================
+    BACKGROUND
+========================== */
+
+.background,
+.bg-transition{
+    position:fixed;
+    inset:0;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    z-index:-3;
+    transition:opacity 2s ease;
+}
+
+/*
+    WAŻNE:
+    contain sprawia że pionowe zdjęcia są całe widoczne.
+    Dodatkowe rozmyte tło w pseudoelemencie
+    maskuje puste przestrzenie.
+*/
+
+.background{
+    opacity:1;
+}
+
+.background::before,
+.bg-transition::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background-image:inherit;
+    background-size:cover;
+    background-position:center;
+
+    filter:blur(30px) brightness(0.45);
+    transform:scale(1.2);
+}
+
+.background::after,
+.bg-transition::after{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background-image:inherit;
+
+    /*
+    contain = całe zdjęcie zawsze widoczne
+    */
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:center;
+
+    filter:brightness(0.9);
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.55)
+    );
+    z-index:-1;
+}
+
+/* =========================
+    CONTENT
+========================== */
+
+.container{
+    position:relative;
+    height:100vh;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.top-text{
+    letter-spacing:4px;
+    text-transform:uppercase;
+    font-size:14px;
+    opacity:0.8;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:clamp(42px, 8vw, 120px);
+    font-weight:300;
+    margin-bottom:10px;
+    text-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+.date{
+    font-size:20px;
+    letter-spacing:3px;
+    margin-bottom:40px;
+    opacity:0.9;
+}
+
+/* =========================
+    COUNTDOWN
+========================== */
+
+.countdown{
+    display:flex;
+    gap:40px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.time-box{
+    min-width:130px;
+}
+
+.number{
+    font-size:clamp(50px, 7vw, 100px);
+    font-weight:700;
+    line-height:1;
+    text-shadow:0 10px 20px rgba(0,0,0,0.4);
+}
+
+.label{
+    margin-top:10px;
+    letter-spacing:4px;
+    font-size:12px;
+    opacity:0.7;
+    text-transform:uppercase;
+}
+
+/* =========================
+    AFTER WEDDING
+========================== */
+
+.after-wedding{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:30px;
+    background:black;
+}
+
+.after-wedding h2{
+    font-size:clamp(40px,7vw,90px);
+    margin-bottom:20px;
+    font-weight:300;
+}
+
+.after-wedding p{
+    opacity:0.8;
+    margin-bottom:40px;
+    max-width:700px;
+    line-height:1.7;
+}
+
+.gallery-button{
+    display:inline-block;
+    padding:18px 34px;
+    border:1px solid rgba(255,255,255,0.3);
+    border-radius:100px;
+    text-decoration:none;
+    color:white;
+    font-size:14px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    transition:0.3s ease;
+    backdrop-filter:blur(10px);
+}
+
+.gallery-button:hover{
+    background:white;
+    color:black;
+    transform:translateY(-3px);
+}
+
+.signature{
+    font-family: 'La Belle Aurore', cursive;
+    font-size:32px;
+}
+
+h2{
+    font-family: 'La Belle Aurore', cursive;
+    font-size:32px;
+    margin-bottom: 10px;
+    margin-top: 50px;
+}
+
+p ,i{
+    margin-bottom:10px;
+    margin-top:10px;
+}
+
+p{
+    font-size: 20px;
+}
+
+/* =========================
+    MOBILE
+========================== */
+
+@media(max-width:700px){
+
+    .countdown{
+    gap:0px;
+    }
+
+    .label{
+        font-size: 10px;
+    }
+
+    .time-box{
+    min-width:60px;
+    }
+
+    .number{
+    font-size:30px;
+    }
+
+    .date{
+    margin-bottom:20px;
+    }
+
+    p ,i{
+        margin-bottom:5px;
+        margin-top:5px;
+    }
+
+    p{
+        font-size: 10px;
+    }
+
+    i{
+        font-size: 10px;
+    }
+
+    .signature{
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom:5px;
+        margin-top: 5px;
+    }
+}
