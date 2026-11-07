@@ -1,5 +1,5 @@
 // DATA ŚLUBU
-const weddingDate = new Date("2027-06-05T15:00:00").getTime();
+const weddingDate = new Date("2027-06-05T15:00:00+02:00").getTime();
 
 // ODLICZANIE
 function updateCountdown(){
